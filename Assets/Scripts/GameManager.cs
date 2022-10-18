@@ -52,16 +52,16 @@ public class GameManager : MonoBehaviour
         scoreText.text = score.ToString();
 
         // Start Level
-        if (Input.GetMouseButtonDown(0) && !isGameStarted) //For PC
-        //if(Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began && !isGameStarted) // For mobile
+        //if (Input.GetMouseButtonDown(0) && !isGameStarted) //For PC
+        if(Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began && !isGameStarted) // For mobile
         {
             // For PC
-            if (EventSystem.current.IsPointerOverGameObject())
-                return;
+            //if (EventSystem.current.IsPointerOverGameObject())
+            //    return;
 
             // For Mobile
-            //if (EventSystem.current.IsPointerOverGameObject(Input.GetTouch(0).fingerId))
-            //    return;
+            if (EventSystem.current.IsPointerOverGameObject(Input.GetTouch(0).fingerId))
+                return;
 
             isGameStarted = true;
             gamePlayPanel.SetActive(true);

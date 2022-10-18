@@ -5,21 +5,25 @@ using UnityEngine;
 public class PlayerManager : MonoBehaviour
 {
     public GameObject player;
+    private int maxSpawn = 3;
     // Start is called before the first frame update
     void Start()
     {
-        SpawnPlayer();
+        int spawnCount = GameManager.currentLevelIndex / 4;
+        if(spawnCount < maxSpawn) {
+            SpawnPlayer(spawnCount);
+        }
+        else
+        {
+            SpawnPlayer(maxSpawn);
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    public void SpawnPlayer(int count)
     {
-        
-    }
-
-    public void SpawnPlayer()
-    {
-        Debug.Log("I was called");
-        Instantiate(player, player.transform.position, Quaternion.identity);
+        for(int i = 0; i < count; i++)
+        {
+            Instantiate(player, player.transform.position, Quaternion.identity);
+        }
     }
 }
